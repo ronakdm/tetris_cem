@@ -56,7 +56,7 @@ class DellacherieFeatureMap:
     def f2(self, prev_env, env, piece_id, action):
         r"""
         Eroded pieces: the contribution of the last piece to the cleared lines
-        time the number of cleared lines
+        times the number of cleared lines.
 
         Parameters
         ----------
@@ -75,13 +75,13 @@ class DellacherieFeatureMap:
         curr_col_height = env.state.top[slot]
         piece_height = env.piece_height[piece_id][orient]
 
-        contribution = (prev_col_height + piece_height - curr_col_height)
+        contribution = prev_col_height + piece_height - curr_col_height
 
         return env.cleared_current_turn * contribution
 
     def f3(self, state):
         r"""
-        Row transitions: number of filled cells adjacent to empty cells summed over all rows
+        Row transitions: number of filled cells adjacent to empty cells summed over all rows.
 
         Parameters
         ----------
@@ -99,20 +99,20 @@ class DellacherieFeatureMap:
             #   prev and curr are 1 for filled and 0 for empty
             prev = 1
             for col in range(N_COLS):
-                curr = (0 if (state.field[row][col] == 0) else 1)
+                curr = 0 if (state.field[row][col] == 0) else 1
                 if curr != prev:
                     row_transitions += 1
                 prev = curr
             # empty cell next to right-side wall
-            if prev == 0: row_transitions += 1
+            if prev == 0:
+                row_transitions += 1
 
         return row_transitions
-
 
     def f4(self, state):
         r"""
         Column transition: same as (f3) summed over all columns;
-        note that borders count as filled cells
+        note that borders count as filled cells.
 
         Parameters
         ----------
@@ -128,17 +128,16 @@ class DellacherieFeatureMap:
         for col in range(N_COLS):
             prev = 1
             for row in range(state.top[col]):
-                curr = (0 if (state.field[row][col]) else 1)
+                curr = 0 if (state.field[row][col]) else 1
                 if curr != prev:
                     col_transitions += 1
                 prev = curr
-        
-        return col_transitions
 
+        return col_transitions
 
     def f5(self, state):
         r"""
-        Number of holes: the number of empty cells with at least one filled cell above
+        Number of holes: the number of empty cells with at least one filled cell above.
 
         Parameters
         ----------
@@ -155,15 +154,18 @@ class DellacherieFeatureMap:
             # Loop through rows up till height of this column
             for row in range(state.top[col]):
                 # If the cell above is empty, increment holes
-                if (row < N_ROWS - 1) and (state.field[row][col] == 0) and (state.field[row + 1][col] != 0):
+                if (
+                    (row < N_ROWS - 1)
+                    and (state.field[row][col] == 0)
+                    and (state.field[row + 1][col] != 0)
+                ):
                     holes += 1
 
         return holes
 
-
     def f6(self, state):
         r"""
-        Cumulative wells: the sum of the accumulated depths of the wells
+        Cumulative wells: the sum of the accumulated depths of the wells.
 
         Parameters
         ----------

@@ -1,4 +1,3 @@
-# make these imports last
 import numpy as np
 import sys
 
@@ -12,39 +11,40 @@ from numpy.testing import assert_almost_equal
 feature_map = DellacherieFeatureMap()
 
 
-
 def test1():
 
-    # This is the example used in "How to design good Tetris players"
-    # We don't actually know what pieces were played, so we will use use 1
-    field = np.array([
-        [0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
-        [1, 0, 1, 1, 0, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 0, 1, 1, 1, 0, 0],
-        [0, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-        [0, 1, 1, 0, 1, 0, 1, 0, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
-        [1, 1, 0, 1, 1, 0, 1, 1, 1, 1],
-        [0, 1, 1, 1, 1, 1, 0, 1, 1, 1],
-        [0, 1, 1, 1, 1, 0, 1, 1, 0, 1],
-        [0, 0, 1, 1, 0, 0, 1, 1, 1, 1],
-        [0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    ])
+    # This is the example used in "How to design good Tetris players".
+    # We don't actually know what pieces were played, so we will use use 1.
+    field = np.array(
+        [
+            [0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+            [1, 0, 1, 1, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 0, 1, 1, 1, 0, 0],
+            [0, 1, 1, 0, 1, 1, 1, 1, 0, 1],
+            [0, 1, 1, 0, 1, 0, 1, 0, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
+            [1, 1, 0, 1, 1, 0, 1, 1, 1, 1],
+            [0, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+            [0, 1, 1, 1, 1, 0, 1, 1, 0, 1],
+            [0, 0, 1, 1, 0, 0, 1, 1, 1, 1],
+            [0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+    )
     top = np.array([7, 10, 11, 11, 10, 9, 11, 12, 11, 14])
-    next_piece = 0  # TODO
+    next_piece = 0
     lost = False
-    turn = 0  # TODO
-    cleared = 0  # TODO
+    turn = 0
+    cleared = 0
     state = TetrisState(field, top, next_piece, lost, turn, cleared)
 
     val = feature_map.f1(state)
@@ -61,6 +61,4 @@ def test1():
 
 
 if __name__ == "__main__":
-    # TODO: Call tests here
     test1()
-    
