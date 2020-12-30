@@ -1,6 +1,6 @@
 # tetris_cem
 
-Joint work with [Cailin Winston](https://github.com/cailinw) and [Peter Michael](https://github.com/ptrmcl). 
+**Joint work with [Cailin Winston](https://github.com/cailinw) and [Peter Michael](https://github.com/ptrmcl).** 
 This repo contains code to design an automated Tetris player, trained using Cross Entropy Method (CEM)
 optimization. The full write-up is in `tetris_cem.pdf`. This project was the response to an open-ended homework assignment in the Reinforcement Learning course at the University of Washington.
 
